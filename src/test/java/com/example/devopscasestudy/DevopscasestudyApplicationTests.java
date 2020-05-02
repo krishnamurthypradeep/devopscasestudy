@@ -48,7 +48,7 @@ class DevopscasestudyApplicationTests {
         List<Product> result = productapi.findAll().getBody();
  
         // then
-        assertThat(result.size()).isEqualTo(0);
+        assertThat(result.size()).isEqualTo(2);
          
 //        assertThat(result.get(0).getFirstName())
 //                        .isEqualTo(employee1.getFirstName());
