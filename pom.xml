@@ -10,7 +10,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>devopscasestudy</artifactId>
 
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.1</version>
 
 	<packaging>war</packaging>
 	<name>devopscasestudy</name>
@@ -41,7 +41,7 @@
   <connection>scm:git:git@github.com:krishnamurthypradeep/devopscasestudy.git</connection>
   <developerConnection>scm:git:git@github.com:krishnamurthypradeep/devopscasestudy.git</developerConnection>
   <url>git@github.com:krishnamurthypradeep/devopscasestudy.git</url>
-  <tag>HEAD</tag>
+  <tag>v0.1.1</tag>
 </scm>
 
 	<dependencies>
