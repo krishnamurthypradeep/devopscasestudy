@@ -9,11 +9,9 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>devopscasestudy</artifactId>
-<<<<<<< HEAD
+
 	<version>0.1.1-SNAPSHOT</version>
-=======
-	<version>0.0.5-SNAPSHOT</version>
->>>>>>> initial_release
+
 	<packaging>war</packaging>
 	<name>devopscasestudy</name>
 	<description>Demo project for Spring Boot</description>
