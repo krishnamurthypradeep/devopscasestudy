@@ -10,11 +10,9 @@
 	<groupId>com.example</groupId>
 	<artifactId>devopscasestudy</artifactId>
 
-<<<<<<< HEAD
-	<version>0.2.1-SNAPSHOT</version>
-=======
+
 	<version>0.1.2-SNAPSHOT</version>
->>>>>>> third_minor_release
+
 
 	<packaging>war</packaging>
 	<name>devopscasestudy</name>
