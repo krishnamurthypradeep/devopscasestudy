@@ -10,7 +10,10 @@
 	<groupId>com.example</groupId>
 	<artifactId>devopscasestudy</artifactId>
 
-	<version>0.1.2-SNAPSHOT</version>
+
+
+	<version>0.2.4-SNAPSHOT</version>
+
 
 	<packaging>war</packaging>
 	<name>devopscasestudy</name>
@@ -60,6 +63,11 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		
+		<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-logging</artifactId>
+</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
