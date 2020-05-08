@@ -2,6 +2,8 @@ package com.example.devopscasestudy.api;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,8 @@ import com.example.devopscasestudy.repo.ProductRepository;
 @RestController
 public class ProductAPI {
 	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Autowired
 	private ProductRepository productRepository;
 	
@@ -28,6 +32,7 @@ public class ProductAPI {
 	
 	@GetMapping("/products")
 	public ResponseEntity<List<Product>> findAll(){
+		logger.info("Processing findAll request");
 		List<Product> products=productRepository.findAll();
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 	}
@@ -41,6 +46,8 @@ public class ProductAPI {
 	
 	@GetMapping("/products/find/{name}")
 	public ResponseEntity<List<Product>> findByName(@PathVariable("name")String  name){
+		
+		logger.info("Processing findByName request");
 		List<Product> products=productRepository.findByProductNameIgnoreCase(name);
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 	}
