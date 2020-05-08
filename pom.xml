@@ -11,7 +11,8 @@
 	<artifactId>devopscasestudy</artifactId>
 
 
-	<version>0.3.2-SNAPSHOT</version>
+
+	<version>0.2.4-SNAPSHOT</version>
 
 
 	<packaging>war</packaging>
