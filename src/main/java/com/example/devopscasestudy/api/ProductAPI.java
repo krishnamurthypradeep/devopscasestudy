@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,9 +22,9 @@ public class ProductAPI {
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@Autowired
-	private ProductRepository productRepository;
-	
+//	@Autowired
+//	private ProductRepository productRepository;
+//	
 	
 
 	@Autowired
@@ -39,19 +41,19 @@ public class ProductAPI {
 	}
 	
 	//http://localhost:8081/products/5674
-//	@GetMapping("/products/{price}")
-//	public ResponseEntity<List<ProductDTO>> findByPrice(@PathVariable("price")double price){
-//		List<Product> products=productRepository.findByPriceGreaterThan(price);
-//		return new ResponseEntity<>(productMapper.toProductDTOs(products), HttpStatus.OK);
-//	}
+	@GetMapping("/products/{price}")
+	public ResponseEntity<List<ProductDTO>> findByPrice(@PathVariable("price")double price){
+		
+		return new ResponseEntity<>(productFacade.findByPriceGreaterThan(price), HttpStatus.OK);
+	}
 	
-//	@GetMapping("/products/find/{name}")
-//	public ResponseEntity<List<ProductDTO>> findByName(@PathVariable("name")String  name){
-//		
-//		logger.info("Processing findByName request");
-//		List<Product> products=productRepository.findByProductNameIgnoreCase(name);
-//		return new ResponseEntity<>(productMapper.toProductDTOs(products), HttpStatus.OK);
-//	}
+	@GetMapping("/products/find/{name}")
+	public ResponseEntity<List<ProductDTO>> findByName(@PathVariable("name")String  name){
+		
+		logger.info("Processing findByName request");
+		
+		return new ResponseEntity<>(productFacade.findByProductName(name), HttpStatus.OK);
+	}
 	
 	// "\"This is a String\""
 	
@@ -59,7 +61,7 @@ public class ProductAPI {
 		@DeleteMapping("/products/{productId}")
 		
 		public @ResponseBody ResponseEntity<StringResponse> delete(@PathVariable("productId")int productId){
-			productRepository.deleteById(productId);
+			productFacade.delete(productId);
 			
 	 
 
@@ -71,14 +73,14 @@ public class ProductAPI {
 		
 	
 	// app.post('/products',(req,res)=>)
-//	@PostMapping("/products")
-//	public ResponseEntity<ProductDTO> save(@RequestBody ProductDTO productDTO){
-//		
-//		
-//		productRepository.save(productMapper.toProduct(productDTO));
-//
-//        return ResponseEntity.status(HttpStatus.CREATED).body(productDTO);
-//	}
+	@PostMapping("/products")
+	public ResponseEntity<ProductDTO> save(@RequestBody ProductDTO productDTO){
+		
+		
+		productFacade.save(productDTO);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(productDTO);
+	}
 	
 	
 	

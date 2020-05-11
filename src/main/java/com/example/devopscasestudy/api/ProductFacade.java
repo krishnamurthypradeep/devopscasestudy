@@ -13,19 +13,42 @@ import com.example.devopscasestudy.model.Product;
 public class ProductFacade {
 	
 	
-	@Autowired
+	  @Autowired
 	  private ProductService productService;
 
 	  @Autowired
 	  private ModelMapper modelMapper;
 
 	  public List<ProductDTO> findAll(){
-	     return convertToOrderDto(productService.findAll());
+	     return convertToProductDto(productService.findAll());
+	  }
+	  
+	  
+	  public List<ProductDTO> findByPriceGreaterThan(double price){
+			return convertToProductDto( productService.findByPriceGreaterThan(price));
+		}
+		
+		
+		public List<ProductDTO> findByProductName(String  name){
+			return convertToProductDto(productService.findByProductName(name));
+		}
+		
+		
+		public void delete(int productId) {
+			productService.delete(productId);
+		}
+		
+		public void save(ProductDTO productDTO) {
+			 productService.save(convertToEntity(productDTO));
+		}
+
+	  private List<ProductDTO> convertToProductDto(List<Product> products) {
+	  return modelMapper.map(products,new TypeToken<List<ProductDTO>>(){}.getType());
+	   
 	  }
 
-	  private List<ProductDTO> convertToOrderDto(List<Product> products) {
-	   List<ProductDTO> productsDTO = modelMapper.map(products,new TypeToken<List<ProductDTO>>(){}.getType());
-	   return productsDTO;
-	  }
-
+	  private Product convertToEntity(ProductDTO productDTO) {
+		  return modelMapper.map(productDTO,new TypeToken<Product>(){}.getType());
+		  
+		  }
 }
