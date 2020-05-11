@@ -6,13 +6,13 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.devopscasestudy.api.ProductAPI;
+import com.example.devopscasestudy.api.ProductDTO;
 import com.example.devopscasestudy.model.Product;
 import com.example.devopscasestudy.repo.ProductRepository;
 
@@ -45,7 +45,7 @@ class DevopscasestudyApplicationTests {
         when(productRepository.findAll()).thenReturn(products);
  
         // when
-        List<Product> result = productapi.findAll().getBody();
+        List<ProductDTO> result = productapi.findAll().getBody();
  
         // then
         assertThat(result.size()).isEqualTo(1);
