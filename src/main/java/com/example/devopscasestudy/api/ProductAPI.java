@@ -34,14 +34,14 @@ public class ProductAPI {
 	public ResponseEntity<List<Product>> findAll(){
 		logger.info("Processing findAll request");
 		List<Product> products=productRepository.findAll();
-		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 	
 	//http://localhost:8081/products/5674
 	@GetMapping("/products/{price}")
 	public ResponseEntity<List<Product>> findByPrice(@PathVariable("price")double price){
 		List<Product> products=productRepository.findByPriceGreaterThan(price);
-		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 	
 	@GetMapping("/products/find/{name}")
@@ -49,7 +49,7 @@ public class ProductAPI {
 		
 		logger.info("Processing findByName request");
 		List<Product> products=productRepository.findByProductNameIgnoreCase(name);
-		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 	
 	// "\"This is a String\""
@@ -73,7 +73,7 @@ public class ProductAPI {
 	@PostMapping("/products")
 	public ResponseEntity<Product> save(@RequestBody Product product){
 		productRepository.save(product);
-		return new ResponseEntity<Product>(product, HttpStatus.CREATED);
+		return new ResponseEntity<>(product, HttpStatus.CREATED);
 	}
 	
 	
