@@ -31,11 +31,7 @@ public class DevopscasestudyApplicationTests {
 	@Mock
 	ProductFacade productFacade;
 	
-	@MockBean
-	ProductService productService;
 	
-	@Mock
-	ProductRepository productRepository;
 	
 	
 
