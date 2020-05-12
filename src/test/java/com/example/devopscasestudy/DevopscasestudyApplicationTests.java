@@ -6,27 +6,35 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.example.devopscasestudy.api.ProductAPI;
+import com.example.devopscasestudy.api.ProductDTO;
+import com.example.devopscasestudy.api.ProductFacade;
+import com.example.devopscasestudy.api.ProductService;
 import com.example.devopscasestudy.model.Product;
 import com.example.devopscasestudy.repo.ProductRepository;
 
 @SpringBootTest
-class DevopscasestudyApplicationTests {
+public class DevopscasestudyApplicationTests {
 
 	
 	
 	@InjectMocks
     ProductAPI productapi;
 	
-	
 	@Mock
-	ProductRepository productRepository;
+	ProductFacade productFacade;
+	
+	
+	
+	
+
      
 	@Test
 	void contextLoads() {
@@ -38,14 +46,16 @@ class DevopscasestudyApplicationTests {
         // given
 	
        
-       List<Product> products = new ArrayList<>();
-       products.add(new Product());
+       List<ProductDTO> products = new ArrayList<>();
+       products.add(new ProductDTO());
        //products.add(new Product()); 
  
-        when(productRepository.findAll()).thenReturn(products);
+        when(productFacade.findAll()).thenReturn(products);
+        
+        
  
         // when
-        List<Product> result = productapi.findAll().getBody();
+        List<ProductDTO> result = productapi.findAll().getBody();
  
         // then
         assertThat(result.size()).isEqualTo(1);

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.devopscasestudy.model.Product;
 import com.example.devopscasestudy.repo.ProductRepository;
 
 @RestController
@@ -23,33 +22,37 @@ public class ProductAPI {
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
+//	@Autowired
+//	private ProductRepository productRepository;
+//	
+	
+
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductFacade productFacade;
 	
-	
-	// node express js
-	// app.get('/products',(req,res)=>)
+
 	
 	@GetMapping("/products")
-	public ResponseEntity<List<Product>> findAll(){
+	public ResponseEntity<List<ProductDTO>> findAll(){
 		logger.info("Processing findAll request");
-		List<Product> products=productRepository.findAll();
-		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+		
+		
+		return new ResponseEntity<>(productFacade.findAll(), HttpStatus.OK);
 	}
 	
 	//http://localhost:8081/products/5674
 	@GetMapping("/products/{price}")
-	public ResponseEntity<List<Product>> findByPrice(@PathVariable("price")double price){
-		List<Product> products=productRepository.findByPriceGreaterThan(price);
-		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+	public ResponseEntity<List<ProductDTO>> findByPrice(@PathVariable("price")double price){
+		
+		return new ResponseEntity<>(productFacade.findByPriceGreaterThan(price), HttpStatus.OK);
 	}
 	
 	@GetMapping("/products/find/{name}")
-	public ResponseEntity<List<Product>> findByName(@PathVariable("name")String  name){
+	public ResponseEntity<List<ProductDTO>> findByName(@PathVariable("name")String  name){
 		
 		logger.info("Processing findByName request");
-		List<Product> products=productRepository.findByProductNameIgnoreCase(name);
-		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+		
+		return new ResponseEntity<>(productFacade.findByProductName(name), HttpStatus.OK);
 	}
 	
 	// "\"This is a String\""
@@ -58,7 +61,7 @@ public class ProductAPI {
 		@DeleteMapping("/products/{productId}")
 		
 		public @ResponseBody ResponseEntity<StringResponse> delete(@PathVariable("productId")int productId){
-			productRepository.deleteById(productId);
+			productFacade.delete(productId);
 			
 	 
 
@@ -71,9 +74,12 @@ public class ProductAPI {
 	
 	// app.post('/products',(req,res)=>)
 	@PostMapping("/products")
-	public ResponseEntity<Product> save(@RequestBody Product product){
-		productRepository.save(product);
-		return new ResponseEntity<Product>(product, HttpStatus.CREATED);
+	public ResponseEntity<ProductDTO> save(@RequestBody ProductDTO productDTO){
+		
+		
+		productFacade.save(productDTO);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(productDTO);
 	}
 	
 	
