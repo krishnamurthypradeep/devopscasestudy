@@ -2,13 +2,13 @@ node {
    def mvnHome
    stage('Prepare') {
       git url: 'git@github.com:krishnamurthypradeep/devopscasestudy.git', branch: 'develop'
-      mvnHome = tool 'maven'
+      mvnHome = tool 'MAVEN3'
    }
    stage('Build') {
       if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean test package"
       } else {
-         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean test package/)
       }
    }
    stage('Unit Test') {
