@@ -32,13 +32,14 @@ node {
        sh 'curl -u jenkins:jenkins -T target/**.war "http://localhost:8082/manager/text/deploy?path=/devops&update=true"'
    }
    
-   stage('Docker Build'){
-   	agent any
-   	steps{
-   		sh 'docker build -t kpradeep/devopscasestudy:latest .'
-   		}
-   
-   }
+  stage('Build Docker Image') {
+      // build docker image
+      sh "whoami"
+      sh "ls -all /var/run/docker.sock"
+      sh "mv ./target/devopscasestudy*.war ./home" 
+      
+      dockerImage = docker.build("devopscasestudy")
+    }
    stage("Smoke Test"){
        sh "curl --retry-delay 10 --retry 5 http://localhost:8082/devops/products"
    }
