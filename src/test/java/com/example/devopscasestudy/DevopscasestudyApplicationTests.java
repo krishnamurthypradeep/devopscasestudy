@@ -40,7 +40,7 @@ public class DevopscasestudyApplicationTests {
 	void contextLoads() {
 	}
 	
-	//@Test
+	@Test
     public void testFindAll() 
     {
         // given
