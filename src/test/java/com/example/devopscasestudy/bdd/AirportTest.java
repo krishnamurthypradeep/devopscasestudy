@@ -18,19 +18,19 @@ public class AirportTest {
         private Passenger mike;
         private Passenger john;
 
-//        @BeforeEach
+        @BeforeEach
         void setUp() {
             economyFlight = new EconomyFlight("1");
             mike  = new Passenger("Mike", false);
             john = new Passenger("John", true);
         }
 
-//        @Nested
-//        @DisplayName("When we have a usual passenger")
+        @Nested
+        @DisplayName("When we have a usual passenger")
         class UsualPassenger {
 
-//            @Test
-//            @DisplayName("Then you can add and remove him from an economy flight")
+            @Test
+            @DisplayName("Then you can add and remove him from an economy flight")
             public void testAddAndRemove() {
                 assertAll("Verify all conditions for a usual passenger and an economy flight",
                         () -> assertEquals("1", economyFlight.getId()),
