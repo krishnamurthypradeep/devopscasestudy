@@ -84,7 +84,11 @@ public class ProductAPI {
 	
 	
 	
+	// Best Practices For Creating a Dockerfile
 	
+	// Separation of concern
+	
+	// Avoid unnecessary installations
 	
 
 }
