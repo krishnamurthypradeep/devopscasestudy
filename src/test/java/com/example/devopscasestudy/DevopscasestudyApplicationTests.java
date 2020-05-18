@@ -36,7 +36,7 @@ public class DevopscasestudyApplicationTests {
 	
 
      
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 	

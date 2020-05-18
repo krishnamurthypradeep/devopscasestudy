@@ -8,11 +8,11 @@ import org.junit.runner.RunWith;
 /**
  * Entry point for running the Cucumber tests in JUnit.
  */
-@RunWith(Cucumber.class)
-@CucumberOptions(
-	plugin = {"pretty"},
-	snippets = SnippetType.CAMELCASE,
-	features = "classpath:features")
+//@RunWith(Cucumber.class)
+//@CucumberOptions(
+//	plugin = {"pretty"},
+//	snippets = SnippetType.CAMELCASE,
+//	features = "classpath:features")
 public class CucumberTest {
 
 	/**

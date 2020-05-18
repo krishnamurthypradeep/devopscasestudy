@@ -18,19 +18,19 @@ public class AirportTest {
         private Passenger mike;
         private Passenger john;
 
-        @BeforeEach
+//        @BeforeEach
         void setUp() {
             economyFlight = new EconomyFlight("1");
             mike  = new Passenger("Mike", false);
             john = new Passenger("John", true);
         }
 
-        @Nested
-        @DisplayName("When we have a usual passenger")
+//        @Nested
+//        @DisplayName("When we have a usual passenger")
         class UsualPassenger {
 
-            @Test
-            @DisplayName("Then you can add and remove him from an economy flight")
+//            @Test
+//            @DisplayName("Then you can add and remove him from an economy flight")
             public void testAddAndRemove() {
                 assertAll("Verify all conditions for a usual passenger and an economy flight",
                         () -> assertEquals("1", economyFlight.getId()),
@@ -43,11 +43,11 @@ public class AirportTest {
             }
         }
 
-        @Nested
-        @DisplayName("When we have a VIP passenger")
+//        @Nested
+//        @DisplayName("When we have a VIP passenger")
         class VipPassenger {
-            @Test
-            @DisplayName("Then you can add him but cannot remove him from an economy flight")
+//            @Test
+//            @DisplayName("Then you can add him but cannot remove him from an economy flight")
             public void testAddAndRemove() {
                 assertAll("Verify all conditions for a VIP passenger and an economy flight",
                         () -> assertEquals("1", economyFlight.getId()),
@@ -62,26 +62,26 @@ public class AirportTest {
         }
     }
 
-    @DisplayName("Given there is a business flight")
-    @Nested
+//    @DisplayName("Given there is a business flight")
+//    @Nested
     class BusinessFlightTest {
         private Flight businessFlight;
         private Passenger mike;
         private Passenger john;
 
-        @BeforeEach
+//        @BeforeEach
         void setUp() {
             businessFlight = new BusinessFlight("2");
             mike = new Passenger("Mike", false);
             john = new Passenger("John", true);
         }
 
-        @Nested
-        @DisplayName("When we have a usual passenger")
+//        @Nested
+//        @DisplayName("When we have a usual passenger")
         class UsualPassenger {
 
-            @Test
-            @DisplayName("Then you cannot add or remove him from a business flight")
+//            @Test
+//            @DisplayName("Then you cannot add or remove him from a business flight")
             public void testAddAndRemove() {
                 assertAll("Verify all conditions for a usual passenger and a business flight",
                         () -> assertEquals(false, businessFlight.addPassenger(mike)),
@@ -92,12 +92,12 @@ public class AirportTest {
             }
         }
 
-        @Nested
-        @DisplayName("When we have a VIP passenger")
+//        @Nested
+//        @DisplayName("When we have a VIP passenger")
         class VipPassenger {
 
-            @Test
-            @DisplayName("Then you can add him but cannot remove him from a business flight")
+//            @Test
+//            @DisplayName("Then you can add him but cannot remove him from a business flight")
             public void testAddAndRemove() {
                 assertAll("Verify all conditions for a VIP passenger and a business flight",
                         () -> assertEquals(true, businessFlight.addPassenger(john)),
