@@ -38,7 +38,7 @@ node {
       sh "ls -all /var/run/docker.sock"
       sh "mv ./target/devopscasestudy-docker-jenkins.war ./home" 
       
-      dockerImage = docker.build("devopscasestudy")
+      dockerImage = docker.build("devopscasestudy-docker-jenkins")
     }
    stage("Smoke Test"){
        sh "curl --retry-delay 10 --retry 5 http://localhost:8082/devopscasestudy-jenkins-pipeline/products"
