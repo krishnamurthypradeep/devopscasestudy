@@ -36,11 +36,11 @@ node {
       // build docker image
       sh "whoami"
       sh "ls -all /var/run/docker.sock"
-      sh "mv ./target/devopscasestudy-docker-jenkins.war devopscasestudy-docker-pipeline" 
+      sh "mv ./target/devopscasestudy-docker-jenkins.war ./home" 
       
-      dockerImage = docker.build("devopscasestudy-docker-pipeline")
+      dockerImage = docker.build("devopscasestudy")
     }
    stage("Smoke Test"){
-       sh "curl --retry-delay 10 --retry 5 http://localhost:8082/devopspipline/products"
+       sh "curl --retry-delay 10 --retry 5 http://localhost:8082/devopscasestudy-jenkins-pipeline/products"
    }
 }
